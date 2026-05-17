@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Станция: Такси в городе</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#eef3ff;
+    text-align:center;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    width:850px;
+    margin:auto;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.info{
+    background:#f8f9ff;
+    padding:15px;
+    border-radius:10px;
+    margin:20px 0;
+    text-align:left;
+    line-height:1.6;
+}
+
+.trip{
+    background:#fafbff;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:15px;
+    margin:10px 0;
+    text-align:left;
+}
+
+input{
+    width:200px;
+    padding:8px;
+    text-align:center;
+    margin-top:10px;
+    font-size:16px;
+}
+
+button{
+    margin-top:20px;
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
+    background:#4a6cf7;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+}
+
+#result{
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.code{
+    margin-top:10px;
+    font-size:20px;
+    font-weight:bold;
+    color:green;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>🚖 Станция: «Такси в городе»</h2>
+
+<div class="info">
+Ребята, расстояния в городе оказались намного больше, чем я думал.<br>
+Чтобы быстрее добраться до нужных мест, я решил воспользоваться такси.<br>
+Цена за 1 км: <b>12,35 лея</b><br>
+Рассчитайте стоимость каждой поездки и общую сумму.  
+Результаты округляйте до сотых.
+</div>
+
+<div class="trip">
+📍 Поездка 1: 14.8 км<br>
+<input id="t1" placeholder="стоимость">
+</div>
+
+<div class="trip">
+📍 Поездка 2: 6.9 км<br>
+<input id="t2" placeholder="стоимость">
+</div>
+
+<div class="trip">
+📍 Поездка 3: 9.3 км<br>
+<input id="t3" placeholder="стоимость">
+</div>
+
+<div class="trip">
+📊 Общая сумма<br>
+<input id="total" placeholder="итог">
+</div>
+
+<button onclick="check()">Проверить</button>
+
+<div id="result"></div>
+<div id="code" class="code"></div>
+
+</div>
+
+<script>
+
+function round(n){
+    return Math.round(n * 100) / 100;
+}
+
+function normalize(value){
+    return value.replace(",", ".");
+}
+
+function check(){
+
+let a = round(14.8 * 12.35); // 182.78
+let b = round(6.9 * 12.35);  // 85.22
+let c = round(9.3 * 12.35);  // 114.86
+
+let sum = round(a + b + c);  // 382.86
+
+let ok =
+normalize(document.getElementById("t1").value.trim()) == a &&
+normalize(document.getElementById("t2").value.trim()) == b &&
+normalize(document.getElementById("t3").value.trim()) == c &&
+normalize(document.getElementById("total").value.trim()) == sum;
+
+if(ok){
+
+    document.getElementById("result").innerText = "✔ Верно!";
+    document.getElementById("code").innerText = "🔐 Код: тика";
+
+}else{
+
+    document.getElementById("result").innerText = "❌ Неверно, попробуй ещё раз";
+    document.getElementById("code").innerText = "";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
