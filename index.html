@@ -70,14 +70,26 @@ button{
     font-weight:bold;
     color:green;
 }
+.team-label{
+    display:inline-block;
+    margin:5px 0 12px;
+    padding:8px 16px;
+    background:#e8f5ee;
+    border:1px solid #b8ddc5;
+    border-radius:20px;
+    color:#176b50;
+    font-size:15px;
+    font-weight:bold;
+}
+    
 </style>
 </head>
 
 <body>
 
 <div class="card">
-
-<h2>🚖 Станция: «Такси в городе»</h2>
+<div class="team-label">👥 Команда 3 · 6-В класс</div>
+<h2>🚖 Станция 5: Такси в городе </h2>
 
 <div class="info">
 Ребята, расстояния в городе оказались намного больше, чем я думал.<br>
@@ -141,7 +153,7 @@ normalize(document.getElementById("total").value.trim()) == sum;
 if(ok){
 
     document.getElementById("result").innerText = "✔ Верно!";
-    document.getElementById("code").innerText = "🔐 Код: тика";
+    document.getElementById("code").innerText = "🔐 Код: куда";
 
 }else{
 
